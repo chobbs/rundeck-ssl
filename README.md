@@ -4,13 +4,13 @@
 
 This project is a simple example to show how Rundeck docker images can be setup with a self-signed cert.
 
-# Details 
+# Description 
 
 Dockerfile:
 ```
-ARG IMAGE
+ARG RUNDECK_IMAGE
 
-FROM ${IMAGE}
+FROM ${RUNDECK_IMAGE}
 
 USER rundeck
 
@@ -27,13 +27,13 @@ services:
     build:
       context: .
       args:
-        IMAGE: ${RUNDECK_IMAGE:-rundeck/rundeck:3.3.0}
+        RUNDECK_IMAGE: ${RUNDECK_IMAGE:-rundeckpro/enterprise:SNAPSHOT}
     container_name: rundeck-ssl
     command: "-Dserver.https.port=4443 -Drundeck.ssl.config=/home/rundeck/server/config/ssl.properties"
     ports:
     - 4443:4443
     environment:
-      RUNDECK_GRAILS_URL: https://test:4443
+      RUNDECK_GRAILS_URL: https://rundeck:4443
 ```
 
 generate-ssl.sh (script on ```lib``` directory that creates the SSL cert on Rundeck image).:
@@ -81,3 +81,8 @@ This command will remove all associated volumes and images as well.
 ```
 docker-compose down --volume --rmi all
 ```
+
+## Download Cert from Browser
+Because this is a self-signed cert, you will need to make sure your system and browsers (including Chrome, Firefox, Safari, Edge, etc.) will accept your certificate as valid.
+
+![cert_download](save_cert.png)
