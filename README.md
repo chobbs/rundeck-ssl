@@ -51,7 +51,6 @@ keytool -keystore etc/keystore \
 
 # and now, copy as truststore
 cp etc/keystore etc/truststore
-Check the project for your tests:
 ```
 
 **Build and Up**  
