@@ -4,7 +4,7 @@ services:
     build:
       context: .
       args:
-        IMAGE: ${RUNDECK_IMAGE:-rundeckpro/enterprise:SNAPSHOT}
+        RUNDECK_IMAGE: ${RUNDECK_IMAGE:-rundeckpro/enterprise:SNAPSHOT}
     container_name: rundeck-ssl
     command: "-Dserver.https.port=4443 -Drundeck.ssl.config=/home/rundeck/server/config/ssl.properties"
     ports:
