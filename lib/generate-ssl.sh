@@ -6,7 +6,7 @@ keytool -keystore etc/keystore \
         -genkey -keyalg RSA \
         -keypass adminadmin \
         -storepass adminadmin \
-        -dname "C=rundeck, S=stgo, OU= rundeck, L=stgo, O=cst, CN=rundeck"
+        -dname "C=us, S=ca, OU= rundeck, L=bayarea, O=cst, CN=rundeck"
 
 cp etc/keystore etc/truststore
 
